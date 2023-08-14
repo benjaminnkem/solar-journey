@@ -10,13 +10,15 @@ const sizes = {
 };
 
 const geometry = new THREE.SphereGeometry(3, 64, 64);
-const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshStandardMaterial({ color: 0x00ff00, roughness: 50 });
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
-const light = new THREE.PointLight(0xffffff, 200, 100);
+const ambientLight = new THREE.AmbientLight(0x333333, 1);
+const light = new THREE.PointLight(0xffffff, 200);
+const lightHelper = new THREE.PointLightHelper(light)
 light.position.set(0, 10, 10);
-scene.add(light);
+scene.add(ambientLight, light, lightHelper);
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
 camera.position.z = 10;
