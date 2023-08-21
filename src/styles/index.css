@@ -178,3 +178,157 @@ main {
   font-weight: 800;
   color: orange;
 }
+
+.cont__3 {
+  grid-column: 1 / 13;
+  background-color: rgba(0, 0, 0, 0.857);
+  border-radius: 0.6rem;
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
+.cont__3 h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.journey__con {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4rem;
+  margin: 1.5rem 0;
+}
+
+.journey__con > div {
+  border: 1px solid rgba(255, 255, 255, 0.411);
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 1rem;
+  transition: background-color 0.2s;
+}
+
+.journey__con > div:hover {
+  background-color: rgba(45, 45, 45, 0.857);
+}
+
+.journey__con > div > p:first-child {
+  font-size: 4rem;
+}
+.journey__con > div > h3 {
+  font-size: 1.5rem;
+}
+
+.journey__con > div > p:first-child,
+.journey__con > div > p,
+.journey__con > div > h3 {
+  margin-bottom: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    max-width: 90%;
+  }
+}
+
+.cont__4 {
+  grid-column: 1 / 13;
+  border-radius: 0.6rem;
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
+.timeline__wrapper {
+  position: relative;
+}
+
+.timeline__wrapper::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  top: 0;
+  left: 50%;
+  margin-left: -2px;
+  height: 100%;
+  background: rgba(203, 142, 88, 0.264);
+}
+
+.timeline_con {
+  padding: 1rem;
+  width: 50%;
+}
+
+.timeline_left {
+  position: relative;
+  left: 0;
+}
+
+.timeline_right {
+  position: relative;
+  left: 50%;
+}
+
+.timeline_main {
+  border: 1px #bd963a98 solid;
+  padding: 1rem;
+  min-height: 10rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.ball_point_left {
+  position: absolute;
+  right: -6px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  background-color: #ff6200;
+  border-radius: 50%;
+}
+
+.ball_point_right {
+  position: absolute;
+  left: -6px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  background-color: #ff6200;
+  border-radius: 50%;
+}
+
+.timeline_main h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.timeline_main p {
+  opacity: 90;
+  color: rgb(216, 216, 216);
+}
+
+.timeline_date {
+  margin-top: 1rem;
+  font-weight: 600;
+  opacity: 80;
+}
+
+.center__button__container {
+  text-align: center;
+}
+
+.book__ticket {
+  background: transparent;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 1.05rem;
+  margin: 1rem 0;
+  border: 2px rgba(255, 255, 255, 0.316) solid;
+  transition: all 0.3s;
+}
+
+.book__ticket:hover {
+  background-color: white;
+  color: black;
+}
