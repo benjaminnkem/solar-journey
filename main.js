@@ -108,10 +108,6 @@ try {
   // Other Objects
   const simpleBox = createRandBox(20, 20, 60, 0xffa500);
   const simpleBox2 = createRandBox(-20, 20, 60, 0x16c60c);
-  const simpleBox3 = createRandBox(-40, 20, 60, 0x0e7490);
-  const simpleBox4 = createRandBox(40, 20, 60, 0xfce2dc);
-  const simpBox5 = createRandBox(60, 20, 60, 0xf97316);
-  const simpBox6 = createRandBox(-60, 20, 60, 0xfce2dc);
 
   const starCon = new THREE.Object3D();
   // Stars Add func
@@ -122,18 +118,14 @@ try {
     );
     const [x, y, z] = Array(3)
       .fill()
-      .map(() => Math.floor(Math.random() * 100));
+      .map(() => Math.floor(Math.random() * 300)); // not the proper way
     star.position.set(x, y, z);
     starCon.add(star);
   };
 
   Array(500).fill().forEach(addStars);
-  starCon.position.set(-60, 0, 85);
+  starCon.position.set(-60, -10, -40);
   scene.add(starCon);
-
-  // const star = new THREE.Mesh(new THREE.SphereGeometry(0.5, 20, 20), new THREE.MeshBasicMaterial({ color: 0xffffff }));
-  // star.position.z = 50;
-  // scene.add(star);
 
   // Canvas
   const canvas = document.querySelector(".canva");
@@ -163,10 +155,6 @@ try {
 
     simpleBox.rotation.z += 0.05;
     simpleBox2.rotation.z += 0.07;
-    simpleBox4.rotation.z += 0.09;
-    simpleBox3.rotation.z += 0.01;
-    simpBox5.rotation.z += 0.09;
-    simpBox6.rotation.z += 0.08;
   };
 
   moveCamera(); // Initial call to prevent camera snapping
@@ -207,10 +195,6 @@ try {
     // Other Objects
     simpleBox.rotation.z += 0.017;
     simpleBox2.rotation.z += 0.01;
-    simpleBox4.rotation.z += 0.02;
-    simpleBox3.rotation.z += 0.009;
-    simpBox5.rotation.z += 0.015;
-    simpBox6.rotation.z += 0.01;
 
     controls.update();
     renderer.render(scene, camera);
