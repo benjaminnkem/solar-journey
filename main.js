@@ -30,7 +30,7 @@ try {
     starsTexture,
   ]);
 
-  const camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 300);
   camera.position.set(0, 30, 1.5);
   scene.add(camera);
 
@@ -91,18 +91,21 @@ try {
   const uranus = createPlanet(1, 30, 0xa855f7, 30, uranusTexture);
   const neptune = createPlanet(1.2, 30, 0xa855f7, 33, neptuneTexture);
 
-  // Other Planet atrr
+  // Planet Attributes
   saturn.planet.rotation.set(0, 0, 10);
 
+  // Canvas
   const canvas = document.querySelector(".canva");
   const renderer = new THREE.WebGLRenderer({ canvas });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(sizes.width, sizes.height);
 
+  // Orbit Controller - Tweak to change
   const controls = new OrbitControls(camera, renderer.domElement);
-  // controls.enableZoom = false;
+  controls.enableZoom = false;
   controls.enableDamping = true;
-  // controls.enablePan = false;
+  controls.enablePan = false;
+  controls.enableRotate = false;
 
   window.addEventListener("resize", () => {
     sizes.width = window.innerWidth;
@@ -116,9 +119,7 @@ try {
   function moveCamera() {
     const top = document.body.getBoundingClientRect().top;
 
-    if (top <= -30) {
-      camera.position.z = top * -0.05;
-    }
+    camera.position.z = top * -0.05;
   }
 
   document.body.onscroll = moveCamera;
@@ -128,30 +129,30 @@ try {
 
     sun.rotation.y += 0.009;
 
-    mercury.centerPointHolder.rotation.y += 0.01;
+    mercury.centerPointHolder.rotation.y += 0.02;
     mercury.planet.rotation.y += 0.08;
 
-    venus.centerPointHolder.rotation.y += 0.005;
+    venus.centerPointHolder.rotation.y += 0.01;
     venus.planet.rotation.y += 0.08;
 
-    earth.centerPointHolder.rotation.y += 0.02;
+    earth.centerPointHolder.rotation.y += 0.007;
     earth.planet.rotation.y += 0.1;
 
-    mars.centerPointHolder.rotation.y += 0.011;
+    mars.centerPointHolder.rotation.y += 0.005;
     mars.planet.rotation.y += 0.01;
 
-    jupiter.centerPointHolder.rotation.y += 0.001;
+    jupiter.centerPointHolder.rotation.y += 0.003;
     jupiter.planet.rotation.y += 0.009;
 
-    jupiter.centerPointHolder.rotation.y += 0.009;
+    jupiter.centerPointHolder.rotation.y += 0.001;
     jupiter.planet.rotation.y += 0.005;
 
-    saturn.centerPointHolder.rotation.y += 0.008;
+    saturn.centerPointHolder.rotation.y += 0.0009;
     saturn.planet.rotation.y += 0.008;
 
-    uranus.centerPointHolder.rotation.y += 0.02;
+    uranus.centerPointHolder.rotation.y += 0.0007;
 
-    neptune.centerPointHolder.rotation.y += 0.007;
+    neptune.centerPointHolder.rotation.y += 0.0005;
     neptune.planet.rotation.y += 0.005;
 
     controls.update();

@@ -1,7 +1,6 @@
-html, body {
-  padding: 0;
+:root {
+  --spacey-cyan: #00d9ff8d;
 }
-
 *::after,
 *::before {
   box-sizing: border-box;
@@ -9,9 +8,173 @@ html, body {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+::selection {
+  background: var(--spacey-cyan);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: linear-gradient(rgb(0, 145, 255), rgb(0, 191, 255));
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.652);
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  color: white;
+  max-width: 1024px;
+  margin-inline: auto;
+}
+
 .canva {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -100;
+}
+
+.container {
+  max-width: 1024px;
+  margin-inline: auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  color: white;
+}
+
+nav {
+  padding-block: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1/13;
+  width: 100%;
+}
+
+nav a:first-child {
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 400;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.__sect__1 {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  margin-top: -8rem;
+  grid-column: 1/13;
+  width: 100%;
+}
+
+.__sect__1 h1 {
+  text-transform: capitalize;
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.496);
+}
+
+/* 
+.__intro__ {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  padding-block: 2rem;
+} */
+
+.intro_texts {
+  grid-column: 1 / span 5;
+  background-color: rgba(0, 0, 0, 0.638);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.543);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.intro_texts h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.intro_texts p {
+  line-height: 1.5rem;
+}
+
+.facts__btn {
+  transition: background-color 0.3s, color 0.3s;
+  padding: 0.6rem 0;
+  width: 100%;
+  margin-top: 0.5rem;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+.facts__btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.cont__1 {
+  grid-column: 5 / 10;
+  background-color: rgba(0, 0, 0, 0.638);
+  border: 1px solid rgba(255, 255, 255, 0.543);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.cont__1 h2 {
+  margin-bottom: 0.6rem;
+}
+
+.cont__2 {
+  grid-column: 7 / 13;
+  background-color: rgba(0, 0, 0, 0.638);
+  border: 1px solid rgba(255, 255, 255, 0.543);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.cont__2 h2 {
+  margin-bottom: 0.6rem;
+}
+
+.__deep {
+  font-weight: 800;
+  color: orange;
 }
