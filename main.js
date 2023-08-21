@@ -43,6 +43,7 @@ try {
   // const gridHelper = new THREE.GridHelper(200, 50);
   // scene.add(gridHelper);
 
+  // Reuseables - For some reason exporting functions from other files don't work
   const createPlanet = (radius, roundness, color, distanceFromOrigin, planetTexture, ring) => {
     const centerPointHolder = new THREE.Object3D();
 
@@ -73,6 +74,16 @@ try {
     return { centerPointHolder, planet };
   };
 
+  const createRandBox = (x, y, z, color) => {
+    const box = new THREE.Mesh(
+      new THREE.BoxGeometry(10, 10, 10),
+      new THREE.MeshBasicMaterial({ color: color ? color : 0xffffff })
+    );
+    box.position.set(x, y, z);
+    scene.add(box);
+    return box;
+  };
+
   const sunGeo = new THREE.SphereGeometry(5, 30, 30);
   const sunMaterial = new THREE.MeshBasicMaterial({
     map: textureLoader.load(sunTexture),
@@ -93,6 +104,36 @@ try {
 
   // Planet Attributes
   saturn.planet.rotation.set(0, 0, 10);
+
+  // Other Objects
+  const simpleBox = createRandBox(20, 20, 60, 0xffa500);
+  const simpleBox2 = createRandBox(-20, 20, 60, 0x16c60c);
+  const simpleBox3 = createRandBox(-40, 20, 60, 0x0e7490);
+  const simpleBox4 = createRandBox(40, 20, 60, 0xfce2dc);
+  const simpBox5 = createRandBox(60, 20, 60, 0xf97316);
+  const simpBox6 = createRandBox(-60, 20, 60, 0xfce2dc);
+
+  const starCon = new THREE.Object3D();
+  // Stars Add func
+  const addStars = () => {
+    const star = new THREE.Mesh(
+      new THREE.SphereGeometry(0.3, 20, 20),
+      new THREE.MeshBasicMaterial({ color: 0xffffff })
+    );
+    const [x, y, z] = Array(3)
+      .fill()
+      .map(() => Math.floor(Math.random() * 100));
+    star.position.set(x, y, z);
+    starCon.add(star);
+  };
+
+  Array(500).fill().forEach(addStars);
+  starCon.position.set(-60, 0, 85);
+  scene.add(starCon);
+
+  // const star = new THREE.Mesh(new THREE.SphereGeometry(0.5, 20, 20), new THREE.MeshBasicMaterial({ color: 0xffffff }));
+  // star.position.z = 50;
+  // scene.add(star);
 
   // Canvas
   const canvas = document.querySelector(".canva");
@@ -116,12 +157,19 @@ try {
     renderer.setSize(sizes.width, sizes.height);
   });
 
-  function moveCamera() {
+  const moveCamera = () => {
     const top = document.body.getBoundingClientRect().top;
-
     camera.position.z = top * -0.05;
-  }
 
+    simpleBox.rotation.z += 0.05;
+    simpleBox2.rotation.z += 0.07;
+    simpleBox4.rotation.z += 0.09;
+    simpleBox3.rotation.z += 0.01;
+    simpBox5.rotation.z += 0.09;
+    simpBox6.rotation.z += 0.08;
+  };
+
+  moveCamera(); // Initial call to prevent camera snapping
   document.body.onscroll = moveCamera;
 
   const animate = () => {
@@ -129,6 +177,7 @@ try {
 
     sun.rotation.y += 0.009;
 
+    // Planets
     mercury.centerPointHolder.rotation.y += 0.02;
     mercury.planet.rotation.y += 0.08;
 
@@ -148,12 +197,20 @@ try {
     jupiter.planet.rotation.y += 0.005;
 
     saturn.centerPointHolder.rotation.y += 0.0009;
-    saturn.planet.rotation.y += 0.008;
+    // saturn.planet.rotation.y += 0.008;
 
     uranus.centerPointHolder.rotation.y += 0.0007;
 
     neptune.centerPointHolder.rotation.y += 0.0005;
     neptune.planet.rotation.y += 0.005;
+
+    // Other Objects
+    simpleBox.rotation.z += 0.017;
+    simpleBox2.rotation.z += 0.01;
+    simpleBox4.rotation.z += 0.02;
+    simpleBox3.rotation.z += 0.009;
+    simpBox5.rotation.z += 0.015;
+    simpBox6.rotation.z += 0.01;
 
     controls.update();
     renderer.render(scene, camera);

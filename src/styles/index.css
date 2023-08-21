@@ -35,6 +35,7 @@ body {
   color: white;
   max-width: 1024px;
   margin-inline: auto;
+  overflow-x: hidden;
 }
 
 .canva {
@@ -326,6 +327,7 @@ main {
   margin: 1rem 0;
   border: 2px rgba(255, 255, 255, 0.316) solid;
   transition: all 0.3s;
+  background: #00000030;
 }
 
 .book__ticket:hover {
