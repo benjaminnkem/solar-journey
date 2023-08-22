@@ -113,18 +113,18 @@ try {
   // Stars Add func
   const addStars = () => {
     const star = new THREE.Mesh(
-      new THREE.SphereGeometry(0.3, 20, 20),
+      new THREE.SphereGeometry(0.15, 20, 20),
       new THREE.MeshBasicMaterial({ color: 0xffffff })
     );
     const [x, y, z] = Array(3)
       .fill()
-      .map(() => Math.floor(Math.random() * 300)); // not the proper way
+      .map(() => Math.floor(Math.random() * 200)); // not the proper way
     star.position.set(x, y, z);
     starCon.add(star);
   };
 
   Array(500).fill().forEach(addStars);
-  starCon.position.set(-60, -10, -40);
+  starCon.position.set(-100, -10, -40);
   scene.add(starCon);
 
   // Canvas
@@ -151,6 +151,7 @@ try {
 
   const moveCamera = () => {
     const top = document.body.getBoundingClientRect().top;
+
     camera.position.z = top * -0.05;
 
     simpleBox.rotation.z += 0.05;
