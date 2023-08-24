@@ -339,3 +339,35 @@ main {
   background-color: white;
   color: black;
 }
+
+@media screen and (max-width: 768px) {
+  .intro_texts,
+  .cont__1,
+  .cont__2,
+  .cont__3 {
+    grid-column: 1 / 13;
+    width: 100%;
+  }
+
+  .journey__con {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .timeline_con {
+    width: 100%;
+  }
+
+  .timeline_left,
+  .timeline_right {
+    left: 8px;
+  }
+
+  .timeline__wrapper::after {
+    left: 0;
+  }
+
+  .ball_point_right, .ball_point_left {
+    left: -14px;
+  }
+}
